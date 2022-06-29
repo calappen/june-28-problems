@@ -32,6 +32,12 @@ print(*m7_under30)
 #@make_upper – make every letter of a string returned from the decorated
 #function uppercase.
 
+def make_upper(func):
+    def wrapper():
+        return func().upper()
+    return wrapper
+
+@make_upper
 def hello_world():
     return 'hello young, good day!!'
 
