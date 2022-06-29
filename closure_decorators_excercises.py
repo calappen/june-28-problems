@@ -4,6 +4,16 @@
 #Using a closure, create a function, multiples_of(n) which we can use to
 #create generators that generate multiples of n less than a given number.
 
+def multiples_of(num):
+    def multiply(*args):
+        count = 1
+        result = 1
+        while result < args[0]-num:
+            result = count * num
+            yield result
+            count += 1
+    return multiply
+
 m3 = multiples_of(3)
 m3_under30 = m3(30)
 m7_under30 = multiples_of(7)(30)
