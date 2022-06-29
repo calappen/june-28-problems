@@ -103,7 +103,21 @@ print(square(3.5)) # output: The input data type is <class 'float'>
 #decorated function is return_type and print the result before executing
 #the function.
 
+def check_return_type(return_type):
+    def dec(func):
+        def wrapper(num):
+            if return_type != int or return_type != float:
+                print("output: =========Error!!")
+                print("The return type is NOT " + str(type(return_type)))
+                return func(num)
+            else:
+                print("The return type is " + str(type(return_type)))
+                return func(num)
+        return wrapper
+    return dec
+
 #pass in a string
+@check_return_type("text")
 def square(n):
     return n ** 2
 
@@ -112,6 +126,7 @@ print(square(6)) # output: =========Error!!
                     #36
 
 #pass in a float
+@check_return_type(3.5)
 def square(n):
     return n ** 2
 
