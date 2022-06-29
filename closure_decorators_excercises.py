@@ -48,6 +48,13 @@ print(hello_world()) # output: HELLO YOUNG, GOOD DAY!!
 #@print_func_name – print the name of the decorated function before
 #executing the function.
 
+def print_func_name(func):
+    def wrapper():
+        print(f"{func.__name__}" + " is running...")
+        func()
+    return wrapper
+
+@print_func_name
 def my_func():
     print('Python is fun!!')
 
