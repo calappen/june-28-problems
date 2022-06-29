@@ -65,6 +65,15 @@ my_func() # output: my_func is running...
 #Decoratos Excercise 3
 #@give_name(name) – concatenate the given name at the end of a string
 #returned from the decorated function.
+
+def give_name(name):
+    def dec(func):
+        def wrapper():
+            return func() + " " + name
+        return wrapper
+    return dec
+
+@give_name("Theresa")
 def greeting():
     return 'Hello'
 
