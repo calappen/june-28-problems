@@ -84,6 +84,13 @@ print(greeting()) # output: Hello Theresa
 #@print_input_type – print a data type of the input argument before
 #executing the decorated function.
 
+def print_input_type(func):
+    def wrapper(num):
+        print("output: The input data type is " + str(type(func(num))))
+        return func(num)
+    return wrapper
+
+@print_input_type
 def square(n):
     return n ** 2
 
